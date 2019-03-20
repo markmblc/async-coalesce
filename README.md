@@ -6,7 +6,7 @@
 async coalesce(resolvers: any[], params: any[] = [], errorIfUndefined?: string) => Promise<any>
 ```
 
-This function is intended for resolving a value potentially defined in higher scopes. Typical use case would be for methods accepting a configuration object whose properties could also be defined in the class constructor or some other greater scope similar to below:
+This function is intended for resolving a value potentially defined in higher scopes. Typical use case would be for methods accepting a configuration object whose properties could also be defined in the class constructor or some other greater scope like below:
 
 ```typescript
 const name = localVar | classVar | globalVar | 'default';
