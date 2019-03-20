@@ -1,0 +1,38 @@
+{
+  "name": "async-coalesce",
+  "description": "Null coalescing functions that evaluate value types, as well as functions. Useful for cascading configurations.",
+  "version": "1.0.1",
+  "contributors": [
+    "Marqit8 <async-coalesce@marqit8.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marqit8/async-coalesce"
+  },
+  "keywords": [
+    "coalesce",
+    "null",
+    "save",
+    "async"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "bump": "npm --no-git-tag-version version patch",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "npmpublish": "npm publish --access public",
+    "deploy": "run-s clean build bump npmpublish clean"
+  },
+  "files": [
+    "dist/",
+    "Readme.md",
+    "LICENSE",
+    ".travis.yml"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3"
+  }
+}
