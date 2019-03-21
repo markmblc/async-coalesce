@@ -3,7 +3,8 @@
 ## coalesce
 
 ```typescript
-async coalesce(resolvers: any[], params: any[] = [], errorIfUndefined?: string) => Promise<any>
+async coalesce(resolvers: any[], errorIfUndefined?: string): Promise<any>;
+async coalesce(resolvers: any[], params: any[], errorIfUndefined?: string): Promise<any>;
 ```
 
 This function is intended for resolving a value potentially defined in higher scopes. Typical use case would be for methods accepting a configuration object whose properties could also be defined in the class constructor or some other greater scope like below:
@@ -33,7 +34,13 @@ const result1 = await coalesce([localMethod, classMethod, 'default'], [localVar]
 const result2 = await coalesce([localMethod, classMethod, otherClassMethod], [localVar], 'result2 is not defined');
 ```
 
-We are not wrapping this in a try block because the coalesce function will throw the 'Failed to coalesce' exception with the reason if any of the functions error.
+We are not wrapping this in a try block because the coalesce function will throw the 'Failed to coalesce' exception with the reason if any of the functions error. Some use cases may still require catching the error.
+
+If the second parameter is an array of values, they will be applied as parameters to each function that is a resolver. If each function will accept different parameters, just set the resolver value as the result of the function, and do not include the params array. If the second parameter is a string, this will be the error text.
+
+```typescript
+const result1 = await coalesce([localMethod(var1, var2), classMethod(var1, var3)], 'Say what!?');
+```
 
 ### Note
 
