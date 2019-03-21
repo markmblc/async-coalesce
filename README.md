@@ -50,11 +50,19 @@ const result1 = await coalesce([obj1.prop, obj2.prop, 'default'], [localVar]);
 
 ```
 
-This will still throw a `Cannot access '.prop' on undefined` error. It is recommended that referenced objects be instantiated with a default value.
+This will throw a "`Cannot access '.prop' on undefined`" error. It is recommended that referenced objects be instantiated with a default value.
 
 ```typescript
 const obj2 = {};
 ```
+
+## coalesceSync
+
+```typescript
+coalesceSync(resolvers: any[], params: any[] = [], errorIfUndefined?: string) => any
+```
+
+This function is also available for use in a constructor, or some other area were async/await does not work. It does not support async resolvers.
 
 ## License
 

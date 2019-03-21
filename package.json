@@ -1,7 +1,7 @@
 {
   "name": "async-coalesce",
   "description": "Null coalescing functions that evaluate value types, as well as functions. Useful for cascading configurations.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "contributors": [
     "Marqit8 <async-coalesce@marqit8.com>"
   ],

@@ -27,5 +27,20 @@ export async function coalesce(resolvers: any[], params: any[] = [], errorIfUnde
     }
     if (errorIfUndefined) throw errorIfUndefined;
     else return undefined;
+}
+
+export function coalesceSync(resolvers: any[], params: any[] = [], errorIfUndefined?: string): any {
+    try {
+        for (let x = 0; x < resolvers.length; x++) {
+            const resolver = resolvers[x];
+            if (typeof resolver === 'undefined' || resolver === null) continue;
+            if (typeof resolver === 'function') return resolver(...params);
+            else return resolver;
+        }
+    } catch (err) {
+        throw `Failed to coalesce: ${err}`;
+    }
+    if (errorIfUndefined) throw errorIfUndefined;
+    else return undefined;
 
 }
