@@ -3,8 +3,8 @@
 ## coalesce
 
 ```typescript
-async coalesce(resolvers: any[], errorIfUndefined?: string): Promise<any>;
-async coalesce(resolvers: any[], params: any[], errorIfUndefined?: string): Promise<any>;
+async coalesce(resolvers: any[], errorIfUndefined?: string) => Promise<any>;
+async coalesce(resolvers: any[], params: any[], errorIfUndefined?: string) => Promise<any>;
 ```
 
 This function is intended for resolving a value potentially defined in higher scopes. Typical use case would be for methods accepting a configuration object whose properties could also be defined in the class constructor or some other greater scope like below:
@@ -66,7 +66,8 @@ const obj2 = {};
 ## coalesceSync
 
 ```typescript
-coalesceSync(resolvers: any[], params: any[] = [], errorIfUndefined?: string) => any
+coalesceSync(resolvers: any[], errorIfUndefined?: string) => any;
+coalesceSync(resolvers: any[], params?: any[], errorIfUndefined?: string) => any;
 ```
 
 This function is also available for use in a constructor, or some other area were async/await does not work. It does not support async resolvers.
